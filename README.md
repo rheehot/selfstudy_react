@@ -7,3 +7,6 @@
 - Redux 👉 같은 기능을 하는 코드를 짜도 contextAPI 보다 코드량이 훨씬 많다.
   keyword : Ducks Structure
   Ducks Structure consists of initialData, actionType, actionFunction and Reducer
+- Redux Tool Kit 👉 initialData, actionType, actionFunction and Reducer를 한 번에 묶어서 사용 가능(slice)
+  keyword : createSlice, configureStore
+  createSlice creates everything you needed for the Ducks Structure
