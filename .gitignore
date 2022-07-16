@@ -4,6 +4,7 @@
 react_recap/node_modules
 react_recap/.pnp
 react_recap.pnp.js
+mock_api/node_modules
 
 # testing
 react_recap/coverage

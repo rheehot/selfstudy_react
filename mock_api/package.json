@@ -1,0 +1,18 @@
+{
+  "name": "mock_api",
+  "version": "1.0.0",
+  "description": "study mock_api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mock",
+    "api"
+  ],
+  "author": "DongGyu",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
