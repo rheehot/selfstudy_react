@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* import { createSlice } from "@reduxjs/toolkit";
 
 // 여기 안에 action type, action function, reducer, initial state가 다 들어간다.
 // 이렇게 다 들어가 있는 것이 slice이다. 아래는 slice의 형태
@@ -16,7 +16,7 @@ const catReducer = createSlice({
       state.age = 1;
     },
   },
-});
+}); */
 
 /* 
 reducer's' 안에 action function이 있다.
@@ -41,5 +41,25 @@ createSlice를 통해 생성된 객체 안에, reducer가 있고
 그리고 같은 객체의 actions 안에 액션 생성함수가 있는
 하나 안에 모든게 들어있는 Slice가 있다.
 */
-export const { changeName } = catReducer.actions;
-export default catReducer.reducer;
+/* export const { changeName } = catReducer.actions;
+export default catReducer.reducer; */
+
+// Recap
+import { createSlice } from "@reduxjs/toolkit";
+
+const catReducerSlice = createSlice({
+  name: "cat",
+  initialState: {
+    age: 26,
+    name: "perl",
+  },
+  reducers: {
+    changeName(state, action) {
+      state.name = action.payload;
+      state.age = 1;
+    },
+  },
+});
+
+export const { changeName } = catReducerSlice.actions;
+export default catReducerSlice.reducer;
