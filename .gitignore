@@ -1,10 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-react_recap/node_modules
 react_recap/.pnp
 react_recap.pnp.js
-mock_api/node_modules
+node_modules/
 
 # testing
 react_recap/coverage
