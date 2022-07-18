@@ -15,11 +15,11 @@ const Signup = () => {
     const new_user = await createUserWithEmailAndPassword(
       getAuth(),
       refId.current.value,
-      refId.current.value
+      refPw.current.value
     );
     await addDoc(collection(db, "authex"), {
       user_id: new_user.user.email,
-      name: refId.current.value,
+      name: refName.current.value,
     });
   };
   return (
