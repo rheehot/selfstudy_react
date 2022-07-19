@@ -21,8 +21,8 @@ const SuccessLogin = () => {
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const auth = getAuth();
-  console.log(auth.currentUser);
+  const authLogin = getAuth();
+  console.log(authLogin.currentUser);
 
   const loginChecked = async (user) => {
     user ? setIsLogin(true) : setIsLogin(false);
@@ -36,7 +36,7 @@ function App() {
        onAuthStateChanged메소드는 두 번째 요소에 로그인과 관련된 파라미터를 하나 넘겨준다. 그래서 콜백함수는 그 파라미터를 보고
        로그인 여부를 검사할 수 있다.
     */
-    onAuthStateChanged(auth, loginChecked);
+    onAuthStateChanged(authLogin, loginChecked);
   }, []);
 
   return (
