@@ -2,6 +2,9 @@
   "name": "mock_api",
   "version": "1.0.0",
   "description": "mock api",
+  "scripts": {
+    "server-start": "json-server --watch db.json --port 5001"
+  },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {

@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../shared/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import app from "../shared/firebase";
 
 const Signup = () => {
   const refId = useRef(null);
@@ -12,7 +13,7 @@ const Signup = () => {
 
   const signupBtn = async () => {
     const new_user = await createUserWithEmailAndPassword(
-      getAuth(),
+      getAuth(app),
       refId.current.value,
       refPw.current.value
     );
