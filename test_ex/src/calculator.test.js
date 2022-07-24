@@ -1,21 +1,27 @@
-import add from "./calculator";
-// 테스트 케이스
-// 테스트 슈트의 이름은 "add test"
-// 뭘 비교할 건지는 두 번째 callback에서 쓸 수 있다.
-it("add test", () => {
-  expect(add(1, 2)).toBe(3);
-});
+// import { add, getNumbers, addArrayNumbers } from "./calculator";
 
-test("add test2", () => {
-  expect(add(1, 2)).toBe(2);
-});
+// it("add test", () => {
+//   expect(add(1, 2)).toBe(3);
+// });
 
-describe("test descript", () => {
-  it("add test", () => {
-    expect(add(1, 2)).toBe(3);
-  });
+// describe("add array number test", () => {
+//   test("get response!", () => {
+//     return getNumbers();
+//   });
 
-  test("add test2", () => {
-    expect(add(1, 2)).toBe(2);
-  });
-});
+//   test("get numbers!", async () => {
+//     let res = await getNumbers();
+//     let data = await res.json();
+
+//     console.log(data);
+
+//     expect(data).toStrictEqual([1, 2, 3, 4, 5]);
+//   });
+
+//   test("add numbers!", async () => {
+//     let res = await getNumbers();
+//     let data = await res.json();
+
+//     expect(addArrayNumbers(data)).toBe(15);
+//   });
+// });
