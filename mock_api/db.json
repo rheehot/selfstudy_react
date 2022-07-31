@@ -1,394 +1,49 @@
 {
-  "signup": [
+  "sleep_times": [
     {
-      "id": "true",
-      "ok": true,
-      "message": "회원가입 성공"
+      "id": 0,
+      "day": "월",
+      "sleep_time": "10:00"
     },
     {
-      "id": "false",
-      "ok": false,
-      "message": "회원가입 실패"
-    }
-  ],
-  "login": [
-    {
-      "id": "true",
-      "ok": true,
-      "message": "로그인 성공",
-      "cookie": "a62e9erai36gw7a6fej1l2aw5f9e2"
+      "id": 1,
+      "day": "화",
+      "sleep_time": "10:00"
     },
     {
-      "id": "false",
-      "ok": false,
-      "message": "로그인 성공"
-    }
-  ],
-  "posts": [
-    {
-      "id": "1",
-      "title": "에어팟 프로",
-      "district": "수성구",
-      "imageURL": "아무노래"
+      "id": 2,
+      "day": "수",
+      "sleep_time": "10:00"
     },
     {
-      "id": "2",
-      "title": "아이폰X",
-      "district": "북구",
-      "imageURL": "얼레리 꼴레리"
+      "id": 2,
+      "day": "목",
+      "sleep_time": "8:00"
     },
     {
-      "id": "3",
-      "title": "맥북 에어",
-      "district": "고산역",
-      "imageURL": "리중딱 리중딱"
+      "id": 2,
+      "day": "금",
+      "sleep_time": "6:00"
     },
     {
-      "id": "4",
-      "title": "세발 자전거",
-      "district": "두류공원",
-      "imageURL": "url"
+      "id": 2,
+      "day": "토",
+      "sleep_time": "8:00"
     },
     {
-      "id": "5",
-      "title": "맥북",
-      "district": "북구",
-      "imageURL": "아무노래"
+      "id": 2,
+      "day": "일",
+      "sleep_time": "10:00"
     },
     {
-      "id": "6",
-      "title": "시계",
-      "district": "북구",
-      "imageURL": "아무노래"
+      "day": "월요일",
+      "sleep_time": "7:00",
+      "id": 3
     },
     {
-      "title": "시계",
-      "district": "북구",
-      "imageURL": "아무노래",
-      "id": "WTcYN87"
-    },
-    {
-      "title": "키링",
-      "district": "동성로",
-      "imageURL": "아무노래",
-      "id": "pUeqzO5"
-    },
-    {
-      "title": "카드지갑",
-      "district": "대공원역",
-      "imageURL": "아무노래",
-      "id": "IWusFld"
-    },
-    {
-      "title": "충전기",
-      "district": "안지랑",
-      "imageURL": "아무노래",
-      "id": "36Iq4mv"
-    },
-    {
-      "title": "충전기",
-      "district": "현충로역",
-      "imageURL": "아무노래",
-      "id": "uE9d58F"
-    },
-    {
-      "title": "500원 동전",
-      "district": "광장코어",
-      "imageURL": "아무노래",
-      "id": "4YrizpL"
-    },
-    {
-      "title": "안경닦이",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "WhGjbO8"
-    },
-    {
-      "title": "안경닦이",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "xsMnDFq"
-    },
-    {
-      "title": "안경닦이",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "ZbC32LO"
-    },
-    {
-      "title": "안경",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "ju1muye"
-    },
-    {
-      "title": "시곗줄",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "HqqZiiD"
-    },
-    {
-      "title": "아이폰SE",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "MYn06Tc"
-    },
-    {
-      "title": "아이폰 케이스",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "kuk6q4k"
-    },
-    {
-      "title": "에어팟 케이스",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "8qw6xZi"
-    },
-    {
-      "title": "전자담배 케이스",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "jpL1isc"
-    },
-    {
-      "title": "전자담배",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "KW23yhI"
-    },
-    {
-      "title": "지포 라이터",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "UOhlKyy"
-    },
-    {
-      "title": "명함지갑",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "6C-PBBJ"
-    },
-    {
-      "title": "차량용 방향제",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "iJvmWkt"
-    },
-    {
-      "title": "향수통",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "MMKR04K"
-    },
-    {
-      "title": "립스틱",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "NjuFaiH"
-    },
-    {
-      "title": "틴트",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "BEJ0bFy"
-    },
-    {
-      "title": "가방",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "W2081AW"
-    },
-    {
-      "title": "샤넬 핸드백",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "rTdbg21"
-    },
-    {
-      "title": "몽블랑 카드지갑",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "H3si0bx"
-    },
-    {
-      "title": "트랜치 코트",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "Bd1ZriN"
-    },
-    {
-      "title": "트랜치 코트",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "a8HDL9m"
-    },
-    {
-      "title": "나이키 바람막이",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "AmX78t-"
-    },
-    {
-      "title": "빨간색 아디다스 슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "C5gUrM_"
-    },
-    {
-      "title": "빨간색 아디다스 슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "YZQbxIK"
-    },
-    {
-      "title": "빨간색 아디다스 슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "E8VG32G"
-    },
-    {
-      "title": "슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "jzFymDv"
-    },
-    {
-      "title": "슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "3wzQj8R"
-    },
-    {
-      "title": "슬리퍼",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "lTZGSSj"
-    },
-    {
-      "title": "티슈",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "fvWFLy_"
-    },
-    {
-      "title": "티슈",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "DoKf5jZ"
-    },
-    {
-      "title": "티슈",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "s5j_NMn"
-    },
-    {
-      "title": "티슈",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "gA7BJWP"
-    },
-    {
-      "title": "마우스",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "k3PsiTV"
-    },
-    {
-      "title": "마우스",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "rb8_qJv"
-    },
-    {
-      "title": "남명초등학교 1학년 2반 교과서",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "6aIs9E4"
-    },
-    {
-      "title": "참고서",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "IHjGfoi"
-    },
-    {
-      "title": "참고서",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "xtvbHM5"
-    },
-    {
-      "title": "참고서",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "C-tDRQG"
-    },
-    {
-      "title": "참고서",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "5IwH9lv"
-    },
-    {
-      "title": "마우스 패드",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "FJn3zqB"
-    },
-    {
-      "title": "오토바이 헬맷",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "5hoDgiF"
-    },
-    {
-      "title": "오토바이 헬맷",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "ugaL4o9"
-    },
-    {
-      "title": "알톤 자전거",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "o4rL8a7"
-    },
-    {
-      "title": "알톤 자전거",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "JHszcxR"
-    },
-    {
-      "title": "깁슨 기타",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "X0Ib5fd"
-    },
-    {
-      "title": "깁슨 기타",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "SOQ-4OC"
-    },
-    {
-      "title": "키보드 덮개",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "CBJ_GIv"
-    },
-    {
-      "title": "키보드 덮개",
-      "district": "대명 9동",
-      "imageURL": "아무노래",
-      "id": "_-0BsTw"
-    },
-    {
-      "title": "키보드 덮개",
-      "district": "대명 9동",
-      "imageURL": "아무노래"
+      "day": "화요일",
+      "sleep_time": "7:00",
+      "id": 4
     }
   ]
 }
