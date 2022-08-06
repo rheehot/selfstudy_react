@@ -5,6 +5,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 80vh;
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const animation = keyframes`
@@ -19,6 +21,14 @@ const Emoji = styled.span`
   font-size: 36px;
 `;
 
+const Extends = styled(Emoji)`
+  font-size: 10px;
+`;
+
+const Input = styled.input.attrs({ required: true })`
+  width: 100px;
+`;
+
 const Box = styled.div`
   height: 200px;
   width: 200px;
@@ -28,9 +38,11 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   ${Emoji}:hover {
-      font-size: 98px;
-    }
+    font-size: 98px;
   }
+  /* @keyframes identifier {
+  
+  } */
 `;
 
 function App() {
@@ -38,7 +50,7 @@ function App() {
     <div>
       <Wrapper>
         <Box>
-          <Emoji>😎</Emoji>
+          <Emoji as="div">😎</Emoji>
         </Box>
         <Emoji>💤</Emoji>
       </Wrapper>
