@@ -1,0 +1,10 @@
+{
+  "api": [
+    { "id": "signup", "status": 200 },
+    {
+      "id": "signin",
+      "data": { "userId": "wow" },
+      "headers": { "token": "f54gb9vh16ulq59p" }
+    }
+  ]
+}
