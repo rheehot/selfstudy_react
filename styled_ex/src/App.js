@@ -9,20 +9,14 @@ const BoxOne = styled.div`
   width: 100px;
   height: 100px;
 `;
-const BoxTwo = styled.div`
-  background-color: tomato;
-  width: 100px;
-  height: 100px;
-`;
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Father>
-        <BoxOne>왜 안됨?</BoxOne>
-        <BoxTwo />
+        <BoxOne />
       </Father>
-    </>
+    </div>
   );
 }
 
