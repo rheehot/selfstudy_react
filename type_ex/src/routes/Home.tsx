@@ -1,24 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const Title = styled.h1`
-  color: ${(props) => props.theme.accentColor};
-  font-size: 3rem;
-`;
-
-const Container = styled.div`
-  padding: 0px 2rem;
-  max-width: 50rem;
-  margin: 0 auto;
-`;
-
-const Header = styled.header`
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const CoinsList = styled.ul``;
 
@@ -30,14 +12,20 @@ const Coin = styled.li`
   a {
     padding: 2rem;
     transition: color 0.2s linear;
-    display: block;
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
   }
   &:hover {
     a {
       color: ${(props) => props.theme.accentColor};
     }
   }
+`;
+
+const Img = styled.img`
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
 `;
 
 interface CoinInterface {
@@ -52,20 +40,36 @@ interface CoinInterface {
 
 function Home() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("https://api.coinpaprika.com/v1/coins");
+      const json = await response.json();
+      setCoins(json.slice(0, 100));
+      setLoading(false);
+    })();
+  }, []);
+  console.log(coins);
   return (
     <>
-      <Container>
-        <Header>
-          <Title>Co-Inside</Title>
-        </Header>
+      {loading ? (
+        "loading..."
+      ) : (
         <CoinsList>
           {coins.map((el) => (
             <Coin key={el.id}>
-              <Link to={`/${el.id}`}>{el.name} &rarr;</Link>
+              <Link to={`/${el.id}`} state={{ name: el.name }}>
+                <Img
+                  alt=""
+                  src={`https://cryptocurrencyliveprices.com/img/${el.id}.png`}
+                />
+                {el.name} &rarr;
+              </Link>
             </Coin>
           ))}
         </CoinsList>
-      </Container>
+      )}
     </>
   );
 }
