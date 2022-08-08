@@ -12,7 +12,7 @@ function Router() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/:coinId" element={<Coin />}>
-            <Route index element={<Price />} />
+            <Route path="price" element={<Price />} />
             <Route path="chart" element={<Chart />} />
           </Route>
         </Route>

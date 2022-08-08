@@ -50,7 +50,6 @@ function Home() {
       setLoading(false);
     })();
   }, []);
-  console.log(coins);
   return (
     <>
       {loading ? (
