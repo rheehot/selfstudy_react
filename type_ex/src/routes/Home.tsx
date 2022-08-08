@@ -1,6 +1,52 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { fetchCoins } from "../api";
+
+interface ICoin {
+  id: string;
+  name: string;
+  symbol: string;
+  rank: number;
+  is_new: boolean;
+  is_active: boolean;
+  type: string;
+}
+
+function Home() {
+  const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins, {
+    onSuccess(data) {
+      console.log("Success fetching Data!");
+    },
+    onError(err) {
+      console.log("Fail fetching Data! ::: ", err);
+    },
+  });
+
+  return (
+    <>
+      {isLoading ? (
+        "loading..."
+      ) : (
+        <CoinsList>
+          {data?.slice(0, 100).map((el) => (
+            <Coin key={el.id}>
+              <Link to={`/${el.id}`} state={{ name: el.name }}>
+                <Img
+                  alt=""
+                  src={`https://cryptocurrencyliveprices.com/img/${el.id}.png`}
+                />
+                {el.name} &rarr;
+              </Link>
+            </Coin>
+          ))}
+        </CoinsList>
+      )}
+    </>
+  );
+}
+
+export default Home;
 
 const CoinsList = styled.ul``;
 
@@ -27,50 +73,3 @@ const Img = styled.img`
   height: 2rem;
   margin-right: 1rem;
 `;
-
-interface CoinInterface {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
-
-function Home() {
-  const [coins, setCoins] = useState<CoinInterface[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch("https://api.coinpaprika.com/v1/coins");
-      const json = await response.json();
-      setCoins(json.slice(0, 100));
-      setLoading(false);
-    })();
-  }, []);
-  return (
-    <>
-      {loading ? (
-        "loading..."
-      ) : (
-        <CoinsList>
-          {coins.map((el) => (
-            <Coin key={el.id}>
-              <Link to={`/${el.id}`} state={{ name: el.name }}>
-                <Img
-                  alt=""
-                  src={`https://cryptocurrencyliveprices.com/img/${el.id}.png`}
-                />
-                {el.name} &rarr;
-              </Link>
-            </Coin>
-          ))}
-        </CoinsList>
-      )}
-    </>
-  );
-}
-
-export default Home;
