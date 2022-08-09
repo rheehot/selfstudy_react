@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
@@ -25,6 +26,9 @@ function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>코인</title>
+      </Helmet>
       {isLoading ? (
         "loading..."
       ) : (

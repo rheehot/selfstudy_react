@@ -1,9 +1,9 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams, Outlet } from "react-router";
 import { useLocation, Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { Helmet } from "react-helmet";
 
 interface RouteState {
   state: {
@@ -11,7 +11,7 @@ interface RouteState {
   };
 }
 
-interface InfoData {
+interface IInfoData {
   id: string;
   name: string;
   symbol: string;
@@ -32,7 +32,7 @@ interface InfoData {
   last_data_at: string;
 }
 
-interface PriceData {
+interface IPriceData {
   id: string;
   name: string;
   symbol: string;
@@ -75,7 +75,7 @@ function Coin() {
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
 
-  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
+  const { isLoading: infoLoading, data: infoData } = useQuery<IInfoData>(
     [coinId, "info"],
     () => fetchCoinInfo(coinId),
     {
@@ -87,7 +87,7 @@ function Coin() {
       },
     }
   );
-  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>(
+  const { isLoading: priceLoading, data: priceData } = useQuery<IPriceData>(
     [coinId, "price"],
     () => fetchCoinTickers(coinId),
     {
@@ -97,45 +97,22 @@ function Coin() {
       onError(err) {
         console.log(err);
       },
+      refetchInterval: 5000,
+      refetchOnWindowFocus: false,
     }
   );
+  // 둘 중 하나라도 로딩 중이면 true
   const loading = infoLoading || priceLoading;
-  /* const [getInfo, getPrice] = useQueries({
-    queries: [
-      {
-        queryKey: [`${coinId}/Info`],
-        queryFn: () => fetchCoinInfo(`${coinId}`),
-      },
-      {
-        queryKey: [`${coinId}/Price`],
-        queryFn: () => fetchCoinTickers(`${coinId}`),
-      },
-    ],
-  });
-  const { isLoading: isInfoLoading, data } = getInfo;
-  const { isLoading: isPriceLoading, data } = getPrice; */
-  /* const [info, setInfo] = useState<InfoData>();
-  const [priceInfo, setPriceInfo] = useState<PriceData>();
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    (async () => {
-      const infoData = await (
-        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-      ).json();
-      const priceData = await (
-        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, []); */
 
   return (
     <>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "...Loading" : infoData?.name}
+        </title>
+      </Helmet>
       <h1>
-        coin{" "}
-        {state?.name ? state.name : loading ? "...Loading" : infoData?.name}
+        <Link to={"/"}>Go back</Link>
       </h1>
       {loading ? (
         "Loading..."
@@ -151,8 +128,8 @@ function Coin() {
               <span>{infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{infoData?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>${priceData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
@@ -174,7 +151,7 @@ function Coin() {
               <Link to="price">Price</Link>
             </Tab>
           </Tabs>
-          <Outlet />
+          <Outlet context={coinId} />
         </>
       )}
     </>

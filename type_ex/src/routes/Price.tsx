@@ -1,5 +1,7 @@
+import ApexCharts from "react-apexcharts";
+
 function Price() {
-  return <h1>Price</h1>;
+  return <ApexCharts />;
 }
 
 export default Price;
