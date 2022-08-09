@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router";
 import { fetchCoinHistory } from "../api";
 import ApaxChart from "react-apexcharts";
 
-interface IHistorical {
+export interface IHistorical {
   time_open: number;
   time_close: number;
   open: string;
