@@ -1,5 +1,23 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
+
+function App() {
+  const isDark = useRecoilValue(isDarkAtom);
+  return (
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Router />
+      </ThemeProvider>
+    </>
+  );
+}
+
+export default App;
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Source+Sans+Pro&display=swap');
@@ -52,21 +70,11 @@ table {
 body{
   font-family: 'Source Sans Pro', sans-serif;
   background-color: ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor}; 
+  color: ${(props) => props.theme.textColor};
+  transition: background-color 0.3s linear, color 0.3s linear;
 }
 a{
   text-decoration: none;
   color: inherit;
 }
 `;
-
-function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <Router />
-    </>
-  );
-}
-
-export default App;
