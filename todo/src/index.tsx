@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools/build/types/react-query-devtools/src/devtools";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RecoilRoot } from "recoil";
+import { lightTheme, darkTheme } from "./theme";
+import { ThemeProvider } from "styled-components";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +17,9 @@ root.render(
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <App />
+        <ThemeProvider theme={lightTheme}>
+          <App />
+        </ThemeProvider>
       </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>
