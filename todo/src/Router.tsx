@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Header from "./routes/Header";
-import TodoList from "./routes/todoList";
+import Header from "./components/Header";
+import TodoList from "./components/todoList";
 
 const Router = () => {
   return (
