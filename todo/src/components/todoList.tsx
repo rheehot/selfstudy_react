@@ -1,12 +1,19 @@
+import { useRecoilValue } from "recoil";
+import { todoList } from "../atoms";
 import CreateTodo from "./CreateTodo";
 import Todo from "./Todo";
 
 const TodoList = () => {
+  const toDos = useRecoilValue(todoList);
   return (
     <>
       <div>
         <CreateTodo />
-        <Todo />
+        <ul>
+          {toDos.map((el) => (
+            <Todo key={el.id} {...el} />
+          ))}
+        </ul>
       </div>
     </>
   );

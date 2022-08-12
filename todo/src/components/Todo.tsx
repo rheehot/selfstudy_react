@@ -1,15 +1,14 @@
-import { useRecoilValue } from "recoil";
-import { todoList } from "../atoms";
+import { ITodo } from "../atoms";
 
-const Todo = () => {
-  const toDos = useRecoilValue(todoList);
+const Todo = ({ text }: ITodo) => {
   return (
     <>
-      <ul>
-        {toDos.map((el) => (
-          <li key={el.id}>{el.text}</li>
-        ))}
-      </ul>
+      <li>
+        <span>{text}</span>
+        <button>Todo</button>
+        <button>Doing</button>
+        <button>Done </button>
+      </li>
     </>
   );
 };
