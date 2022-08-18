@@ -1,10 +1,11 @@
 // recap
 // const add = (a: number, b: number) => a + b;
+
 // call "signature"
-// type Add = (a: number, b: number) => number;
-// const min: Add = (a, b) => {
-//   return a + b;
-// };
+/* type Add = (a: number, b: number) => number;
+const min: Add = (a, b) => {
+  return a + b;
+}; */
 
 // Overloading : 함수가 여러개의 call signature를 가지고 있을 때 발생한다.
 // 라이브러리나 패키지를 디자인 할 때 자주 사용된다.
@@ -28,7 +29,7 @@ const plus: Add = (a, b, c?: number) => {
 // 여러 타입들이 들어올 수 있다면 그 타입을 일일이 정해주기 보다는 이렇게 제네릭 타입을 사용하면 훨씬 편리하다. 이렇게 해줌으로서 Add는 훨씬 간단하게 다형성을 가질 수 있다.
 // 제네릭은 내가 요구한 대로 call signature를 생성하게 해주는 도구이다. 이 부분에서 any와 크게 다르다.
 // type Add = {
-//     <T>(a: T[]): void;
+//   <T>(a: T[]): void;
 // };
 // type Add = <T, M>(a: T[]) => T;
 // type Add = <T, M>(a: T[], b?: M) => T; // 제네릭이 여러 개이면 그냥 순서대로 사용해주면 된다. 이 경우에는 두 번째 파라미터에 해당하는 요소의 타입을 M제네릭이 추론한다.
@@ -52,14 +53,15 @@ Generics
 // Conclusion : 라이브러리를 만들거나 다른 개발자가 사용할 기능을 개발하는 경우엔 제네릭이 유용하다. 그 외 대부분의 경우에는 제네릭을 작성하는 경우는 많이 없다고 한다. 대부분은 만들어 진 제네릭을 사용한다.
 // 타입스크립트가 스스로 이게 어떤 타입인지 찾게하는 것이 항상 best이다.
 
+// 보다 보편적인 제네릭 사용법
 // function Test<V>(a: V[]) {
 //   return a[0];
 // }
+
 // type Player<M> = {
 //   name: string;
 //   extraInfo: M;
 // };
-
 // const nico: Player<{ favFood: string }> = {
 //   name: "nico",
 //   extraInfo: {
@@ -68,3 +70,72 @@ Generics
 // };
 
 // 제네릭은 함수에서만 사용을 하는 것이 아니다.
+
+// 4강
+// OOP
+
+// 다른 객체 지향 언어에서 처럼 사용할 수 있지만 js로 컴파일이 되면 그대로 돌아온다.
+// class Player {
+//   constructor(
+//     private firstname: string,
+//     private lastname: string,
+//     public nickname: string
+//   ) {}
+// }
+
+// const nico = new Player("nico", "las", "니꼬");
+
+// abstract class 추상 클래스 ::: 다른 클래스가 상속 받을 수 있는 클래스이다. But!! 직접 새로운 인스턴스를 만들 수 없다.
+
+// abstract class User {
+//   constructor(
+//     private firstname: string,
+//     private lastname: string,
+//     public nickname: string
+//   ) {}
+// }
+
+// class Player extends User {}
+
+// const nico = new Player("nico", "las", "니꼬");
+// console.log(nico.nickname);
+
+// abstract class User {
+//   constructor(
+//     private firstname: string,
+//     private lastname: string,
+//     public nickname: string
+//   ) {}
+//   private getFullName() {
+//     return `${this.firstname} ${this.lastname}`;
+//   }
+// }
+
+// class Player extends User {}
+
+// const nico = new Player("nico", "las", "니꼬");
+// console.log(nico.getFullName());
+
+// 추상 클래스 안에서는 추상 메소드를 만들 수 있음. 그렇게 하기 위해서는 위 처럼 implementation을 하지말고 call signature를 적으면 된다.
+
+abstract class User {
+  constructor(
+    private firstname: string,
+    private lastname: string,
+    protected nickname: string
+  ) {}
+  abstract getNickName(): void;
+  private getFullName() {
+    return `${this.firstname} ${this.lastname}`;
+  }
+}
+
+// 추상 메소드는 직접 추상 클래스를 상속받는 모든 것들이 구현해야 하는 메소드이다.
+class Player extends User {
+  getNickName(): void {
+    console.log(this.nickname);
+  }
+}
+
+const nico = new Player("nico", "las", "니꼬");
+console.log(nico.getFullName());
