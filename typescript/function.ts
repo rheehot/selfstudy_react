@@ -71,6 +71,19 @@ Generics
 
 // 제네릭은 함수에서만 사용을 하는 것이 아니다.
 
+/**
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ * ===================================
+ */
+
 // 4강
 // OOP
 
@@ -118,24 +131,138 @@ Generics
 
 // 추상 클래스 안에서는 추상 메소드를 만들 수 있음. 그렇게 하기 위해서는 위 처럼 implementation을 하지말고 call signature를 적으면 된다.
 
-abstract class User {
-  constructor(
-    private firstname: string,
-    private lastname: string,
-    protected nickname: string
-  ) {}
-  abstract getNickName(): void;
-  private getFullName() {
-    return `${this.firstname} ${this.lastname}`;
-  }
-}
+// abstract class User {
+//   constructor(
+//     private firstname: string,
+//     private lastname: string,
+//     protected nickname: string
+//   ) {}
+//   abstract getNickName(): void;
+//   private getFullName() {
+//     return `${this.firstname} ${this.lastname}`;
+//   }
+// }
 
-// 추상 메소드는 직접 추상 클래스를 상속받는 모든 것들이 구현해야 하는 메소드이다.
-class Player extends User {
-  getNickName(): void {
-    console.log(this.nickname);
-  }
-}
+// // 추상 메소드는 직접 추상 클래스를 상속받는 모든 것들이 구현해야 하는 메소드이다.
+// class Player extends User {
+//   getNickName(): void {
+//     console.log(this.nickname);
+//   }
+// }
 
-const nico = new Player("nico", "las", "니꼬");
-console.log(nico.getFullName());
+// const nico = new Player("nico", "las", "니꼬");
+// console.log(nico.getFullName());
+
+// type Words = {
+//   [key:string] : string;
+// }
+// let dict :Words = {
+//   "potato" : "food"
+// }
+
+// type Words = {
+//   [key: string]: string;
+// };
+// class Dict {
+//   private words: Words // 이렇게 하면 initialize가 안되기 때문에 에러가 있다. constructor에 넣으면 constructor 안에 선언이 되는데, 밖에 하고 싶으면 아래의 코드처럼 해주면 된다. 수동으로 초기화를 시키는 방법이다.
+// }
+
+// type Words = {
+//   [key:string] : string;
+// }
+// class Dict {
+//   private words: Words
+//   constructor(){
+//       this.words = {}
+//   }
+//   add(word:Word){ // class를 통해서 type해줄 수 있다. 이렇게 되면 word가 Word의 instance가 된다.
+//       if(this.words[word.term]===undefined){
+//           this.words[word.term] = word.def;
+//       }
+//   }
+//   def(term:string){
+//       return this.words[term];
+//   }
+// }
+// class Word {
+//   constructor(
+//       public readonly term: string,
+//       public def: string,
+//   ){}
+// }
+// const Kimchi = new Word("kimchi", "한국의 음식");
+// const dict = new Dict();
+
+// dict.add(Kimchi);
+// dict.def("kimchi");
+
+// interface ::: type과는 두 가지가 다르다. 일단 interface는 오브젝트의 모양을 특정해주기 위함이다. 그리고 accumulation도 된다.
+
+// interface User {
+//   readonly name: string,
+// }
+
+// type UserType = {
+//   name: string,
+// }
+
+// interface Player extends User{
+// }
+// type PlayerType = UserType & {
+// }
+
+// 청사진을 제시함
+// abstract class User {
+//   constructor(
+//       protected firstname: string,
+//       protected lastname: string,
+//   ){}
+
+//   abstract sayHi(name:string):string;
+//   abstract fullName():string;
+// }
+
+// 인터페이스는 가볍다. 이전 비디오에서 봤다시피, 인터페이스는 컴파일하면 JS로 바뀐다. 아래처럼 굳이 상속을 위해서 class를 만들 필요는 없다.
+// 인터페이스는 constructor가 없고 abstract 것들도 없다. 하지만 인터페이스는 오브젝트나 클래스의 모양을 묘사하도록 해준다.
+// abstract class User {
+//   constructor(
+//       protected firstname: string,
+//       protected lastname: string,
+//   ){}
+
+//   abstract sayHi(name:string):string;
+//   abstract fullName():string;
+// }
+
+// class Player extends User {
+//   sayHi(name:string){
+//       return `Hello ${name}. My name is ${this.fullName}`
+//   }
+//   fullName(){
+//       return `${this.firstname} ${this.lastname}`
+//   }
+// }
+
+// extends는 JS의 키워드이다.
+// interface를 이용해서 class에 상속을 하기 위해서는 implements를 쓰면 된다.
+// 클래스가 원하는대로 행동하고, 원하는 property들 가지도록 강제하고 싶어하는데, 이 방법을 쓰면 딱이다.
+// 할 거 다 해주면서도 인터페이스는 js코드로 컴파일 되지는 않는다.
+
+// interface User {
+//   firstname: string;
+//   lastname: string;
+//   sayHi(name: string): string;
+//   fullName(): string;
+// }
+// class Player implements User {
+//   constructor(public firstname: string, public lastname: string) {}
+//   fullName() {
+//     return `${this.firstname} ${this.lastname}`;
+//   }
+//   sayHi(name: string) {
+//     return `Hello ${name}. My name is ${this.fullName}`;
+//   }
+// }
+
+// 문제는 인터페이스를 상속할 때에는 property를 private로 만들지 못한다.
+// 이 친구들은 무조건 public이 되어야 한다
