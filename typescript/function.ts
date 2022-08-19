@@ -283,15 +283,15 @@ Generics
 // Class & interface Recap
 
 /**
- * 인터페이스는 우리가 원하는 메소드와 property를 클래스가 가지도록 강제할 수 있게 해준다.
+ * 인터페이스는 우리가 원하는 메소드와 property를 클래스가 가지도록 강제할 수 있게 해준다. => class에 대한 type을 할 수 있다.
  * 타입해주는 역할을 하면서도 추상 클래스와는 다르게 자바스크립트로 컴파일 되지는 않는다.
  * 파일 크기가 다소 커지고 추가 클래스가 만들어지는 단점이 사라진다. 단지 추상 클래스를 통해서 다른 클래스를 타입하고자 한다면 차라리 인터페이스를 쓰는 것이 훨씬 경제적인 선택이다.
  * Interface, Type은 둘 다 상속이 된다. 둘 모두 추상 클래스를 대체할 수 있다.
  *
  * Type과 Interface는 비슷한 역할을 하지만 할 수 있는 일의 범위와 사용 방법에서 차이가 있다.
  *
- * Type은 상속시에 &, Interface는 extends를 사용한다.
- * 대신 Type은 일반 Value를 타입할 수도 있고, Alias처럼 사용할 수도 있다. 하지만 Interface는 객체를 타입하는 용도로 사용할 수 있다.
+ * Type은 상속시에 &, Interface는 extends를 사용한다. => 그래서 니꼬는 extends를 쓰는 면에서 좀 더 객체지향적인 느낌을 받기 때문에 선호한다고도 말했음~
+ * 대신 Type은 일반 Value를 타입할 수도 있고, Alias처럼 사용할 수도 있다. 하지만 Interface는 객체를 타입하는 용도로 사용할 수 있다.(implements를 써야함!)
  * 그리고 Type은 accumulation이 안되지만 Interface는 된다.
  */
 
@@ -312,7 +312,7 @@ class User implements PlayerA {
 /**
  * Polymorphism ::: 다형성, 제네릭, 클래스, 인터페이스를 모두 합쳐보자.
  * 다형성은 다른 모양의 코드를 가질 수 있게 해준다. 다형성을 이룰 수 있는 방법은 제네릭이다.
- * 제네릭은 concrete타입이 아니라 placeholder타입이다.
+ * 제네릭은 concrete타입이 아니라 'placeholder타입'이다.
  * 그래서 같은 코드를 각각의 상황에서 다른 타입을 가질 수 있게 할 수 있다.
  *
  * 제네릭은 다른 타입에게 물려줄 수 있다.
@@ -351,5 +351,8 @@ class LocalStorage<T> {
   }
 }
 
-const strginStorage = new LocalStorage<string>();
+const stringStorage = new LocalStorage<string>();
+stringStorage.set("string", true);
 // 이렇게 해주면 LocalStorage를 상속받은, 제네릭에 string이 할당된 클래스이다. 이렇게 하면 제네릭을 바탕으로 만들어진 call signature를 만들어 준다.
+const booleanStorage = new LocalStorage<boolean>();
+booleanStorage.set("string", "string");
