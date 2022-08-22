@@ -356,3 +356,4 @@ stringStorage.set("string", true);
 // 이렇게 해주면 LocalStorage를 상속받은, 제네릭에 string이 할당된 클래스이다. 이렇게 하면 제네릭을 바탕으로 만들어진 call signature를 만들어 준다.
 const booleanStorage = new LocalStorage<boolean>();
 booleanStorage.set("string", "string");
+// 잘 되네!
