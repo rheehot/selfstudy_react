@@ -1,0 +1,24 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "build",
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
+    "strict": true
+  }
+}
+/* 
+앞서서 Lib의 정의의인
+Specify a set of bundled library declaration files that describe the target runtime environment.
+이거 중에서 that describe the target runtime environment.는 우리가 적은 코드가 어느 환경에서 돌아가는지를 정의해 두었다는 것을 알 수 있었다.
+그 정의는 그 앞 부분인 bundled library declaration files에 되어있는데,
+그 declaration files는 아래와 같다.
+*/
+
+// 타입 정의
+/* 
+우리가 타입스크립트를 사용하는 목적과 연결되어 있는데, 대부분 라이브러리는 js로 만들어졌다. 
+그래서 우리가 이걸 ts프로젝트에서 쓰려면, ts에게 우리가 불러올 자바스크립트 함수의 모양을 설명하려면, 
+보호와 자동완성 기능을 사용하기 위해서 설명하려면, js함수의 모양, 더 나아가서는 라이브러리, 패키지의 타입 정의가 필요하다.
+
+*/
