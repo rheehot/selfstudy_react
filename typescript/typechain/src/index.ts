@@ -42,7 +42,7 @@ class Block implements BlockShape {
   }
   static calculateHash(prevHash: string, height: number, data: string) {
     const toHash = `${prevHash}${height}${data}`;
-    return crypto.createHash("sha-256").update(toHash).digest("hex");
+    return crypto.createHash("sha256").update(toHash).digest("hex");
   }
 }
 
@@ -68,6 +68,14 @@ class Blockchain {
     this.blocks.push(newBlock);
   }
   public getBlocks() {
-    return this.blocks;
+    return [...this.blocks];
   }
 }
+
+const blockchanin = new Blockchain();
+
+blockchanin.addBlock("First one");
+blockchanin.addBlock("Second one");
+blockchanin.addBlock("Third one");
+
+console.log(blockchanin.getBlocks());
