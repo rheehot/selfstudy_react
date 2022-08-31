@@ -14,11 +14,9 @@ const Todo = ({ text, category, id }: ITodo) => {
     setTodos((prev) => {
       // findIndex 잘 알아두자!
       const index = prev.findIndex((el) => el.id === id);
-      const prevTodo = prev[index];
       // 카테고리를 수정한 새로운 todo
-      const currTodo = { text, category: name, id };
-      prev.splice(index, 1, currTodo);
-      return prev;
+      const currTodo = { text, category: name as any, id };
+      return [...prev.slice(0, index), currTodo, ...prev.slice(index + 1)];
     });
     // setTodos를 하는데 이렇게 하는 이유는 immutability를 추구하면서
     // mutate를 하려고 하다 보니 새로운 배열을 만들어야 하기 때문에
