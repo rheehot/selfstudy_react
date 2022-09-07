@@ -1,8 +1,29 @@
 import { atom, selector } from "recoil";
+
+/* 
+enums
+열거형은 Typescript가 제공하는 기능 중 하나이다. enum은 열거형으로 이름이 있는 상들의 집합을 정의할 수 있다.
+열거형을 사용하면 의도를 문서화 하거나 구분되는 사례 집합을 더 쉽게 만들 수 있습니다.
+TypeScript는 숫자와 문자열 기반 열거형을 제공합니다.
+
+export enum Categories {
+  "TO_DO",
+  "DOING",
+  "DONE",
+}
+이렇게 해주면 위에서 차례대로 0~2까지 numbering이 된다. 문제는 버튼의 name이 숫자여선 안된다는 것이다. string이여야 한다.
+*/
+
+export enum Categories {
+  "TO_DO" = "TO_DO",
+  "DOING" = "DOING",
+  "DONE" = "DONE",
+}
+
 export interface ITodo {
   text: string;
   id: number;
-  category: "TO_DO" | "DOING" | "DONE";
+  category: Categories;
 }
 
 export const isDarkAtom = atom({
@@ -13,6 +34,11 @@ export const isDarkAtom = atom({
 export const todoList = atom<ITodo[]>({
   key: "toDo",
   default: [],
+});
+
+export const categoryState = atom<Categories>({
+  key: "category",
+  default: Categories.TO_DO,
 });
 
 /* 
@@ -38,10 +64,7 @@ export const todoSelector = selector({
    */
   get({ get }) {
     const toDos = get(todoList);
-    return [
-      toDos.filter((toDo) => toDo.category === "TO_DO"),
-      toDos.filter((toDo) => toDo.category === "DOING"),
-      toDos.filter((toDo) => toDo.category === "DONE"),
-    ];
+    const category = get(categoryState);
+    return toDos.filter((toDo) => toDo.category === category);
   },
 });
