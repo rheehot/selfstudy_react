@@ -20,9 +20,11 @@ const CreateTodo = () => {
     defaultValues: {},
   });
   // handleSumbit의 onValid함수 {toDo}는 hook-form에서 온 것을 구조분해 문법으로 받은 것이다.
+  // TODO : Add할 때 LocalStorage에 넣어보기
   const onValid = ({ todo }: IValid) => {
+    const id = Date.now();
     setValue("todo", "");
-    setTodos((prev) => [{ text: todo, category, id: Date.now() }, ...prev]);
+    setTodos((prev) => [{ text: todo, category, id }, ...prev]);
   };
   return (
     <>

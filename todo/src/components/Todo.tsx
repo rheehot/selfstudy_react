@@ -1,3 +1,4 @@
+import React from "react";
 import { useSetRecoilState } from "recoil";
 import { Categories, ITodo, todoList } from "../atoms";
 
@@ -22,6 +23,17 @@ const Todo = ({ text, category, id }: ITodo) => {
     // mutate를 하려고 하다 보니 새로운 배열을 만들어야 하기 때문에
     // 이렇게 하는 것이다.
   };
+  const handleDelete = () => {
+    return setTodos((prev) => {
+      return prev.filter((el) => {
+        if (el.id !== id) {
+          localStorage.removeItem(String(el.id));
+        }
+        return el.id !== id;
+      });
+    });
+  };
+
   return (
     <>
       <li>
@@ -41,6 +53,7 @@ const Todo = ({ text, category, id }: ITodo) => {
             Done
           </button>
         )}
+        <button onClick={handleDelete}>Delete</button>
       </li>
     </>
   );
