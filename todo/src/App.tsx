@@ -1,11 +1,17 @@
-import { useRecoilValue } from "recoil";
+import { useEffect } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { isDarkAtom } from "./atoms";
+import { isDarkAtom, todoList } from "./atoms";
 import Router from "./Router";
 import { darkTheme, lightTheme } from "./theme";
 
 function App() {
   const isDark = useRecoilValue(isDarkAtom);
+  const setTodos = useSetRecoilState(todoList);
+  useEffect(() => {
+    const localTodos = localStorage.getItem("todos");
+    setTodos(localTodos ? JSON.parse(localTodos) : []);
+  }, []);
   return (
     <>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>

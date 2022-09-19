@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { isDarkAtom } from "../atoms";
 
 const Header = () => {
-  /* const isDark = useRecoilValue(isDarkAtom);
-  const setIsDark = useSetRecoilState(isDarkAtom); */
   const [isDark, setIsDark] = useRecoilState(isDarkAtom);
   return (
     <>

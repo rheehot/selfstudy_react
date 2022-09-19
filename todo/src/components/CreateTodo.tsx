@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { categoryState, todoList } from "../atoms";
 
 interface IValid {
@@ -20,12 +20,24 @@ const CreateTodo = () => {
     defaultValues: {},
   });
   // handleSumbit의 onValid함수 {toDo}는 hook-form에서 온 것을 구조분해 문법으로 받은 것이다.
-  // TODO : Add할 때 LocalStorage에 넣어보기
   const onValid = ({ todo }: IValid) => {
     const id = Date.now();
+    const newTodo = { text: todo, category, id };
+
     setValue("todo", "");
-    setTodos((prev) => [{ text: todo, category, id }, ...prev]);
+    setTodos((prev) => [newTodo, ...prev]);
+
+    const localTodos: IValid[] = JSON.parse(
+      localStorage.getItem("todos")
+        ? localStorage.getItem("todos")
+        : (null as any)
+    );
+
+    const modifiedTodos = [newTodo, ...localTodos];
+
+    localStorage.setItem("todos", JSON.stringify(modifiedTodos));
   };
+
   return (
     <>
       <form

@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Categories, categoryState, todoSelector } from "../atoms";
 import CreateTodo from "./CreateTodo";
